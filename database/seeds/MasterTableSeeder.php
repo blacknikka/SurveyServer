@@ -12,95 +12,95 @@ class MasterTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'No' => 1,
-            'Type' => 'SelectOne',
-            'Answer' => 'A1',
+            'id' => 1,
+            'type' => 'SelectOne',
+            'answer' => 'A1',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 1,
-            'Type' => 'SelectOne',
-            'Answer' => 'A2',
+            'id' => 1,
+            'type' => 'SelectOne',
+            'answer' => 'A2',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 1,
-            'Type' => 'SelectOne',
-            'Answer' => 'A3',
+            'id' => 1,
+            'type' => 'SelectOne',
+            'answer' => 'A3',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 1,
-            'Type' => 'SelectOne',
-            'Answer' => 'A4',
+            'id' => 1,
+            'type' => 'SelectOne',
+            'answer' => 'A4',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 2,
-            'Type' => 'SelectOne',
-            'Answer' => 'B1',
+            'id' => 2,
+            'type' => 'SelectOne',
+            'answer' => 'B1',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 2,
-            'Type' => 'SelectOne',
-            'Answer' => 'B2',
+            'id' => 2,
+            'type' => 'SelectOne',
+            'answer' => 'B2',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 2,
-            'Type' => 'SelectOne',
-            'Answer' => 'B3',
+            'id' => 2,
+            'type' => 'SelectOne',
+            'answer' => 'B3',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 2,
-            'Type' => 'SelectOne',
-            'Answer' => 'B4',
+            'id' => 2,
+            'type' => 'SelectOne',
+            'answer' => 'B4',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 3,
-            'Type' => 'SelectMulti',
-            'Answer' => 'C1',
+            'id' => 3,
+            'type' => 'SelectMulti',
+            'answer' => 'C1',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 3,
-            'Type' => 'SelectMulti',
-            'Answer' => 'C2',
+            'id' => 3,
+            'type' => 'SelectMulti',
+            'answer' => 'C2',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 3,
-            'Type' => 'SelectMulti',
-            'Answer' => 'C3',
+            'id' => 3,
+            'type' => 'SelectMulti',
+            'answer' => 'C3',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 3,
-            'Type' => 'SelectMulti',
-            'Answer' => 'C4',
+            'id' => 3,
+            'type' => 'SelectMulti',
+            'answer' => 'C4',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
         $param = [
-            'No' => 4,
-            'Type' => 'WriteAny',
-            'Answer' => '',
+            'id' => 4,
+            'type' => 'WriteAny',
+            'answer' => '',
         ];
-        DB::table('master')->insert($param);
+        DB::table('masters')->insert($param);
 
     }
 }

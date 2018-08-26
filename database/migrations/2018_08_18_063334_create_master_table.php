@@ -13,23 +13,23 @@ class CreateMasterTable extends Migration
      */
     public function up()
     {
-        Schema::create('master', function (Blueprint $table) {
-            $table->integer('No');
-            $table->string('Type');
-            $table->string('Answer');
+        Schema::create('masters', function (Blueprint $table) {
+            $table->integer('id');
+            $table->string('type');
+            $table->string('answer');
         });
 
-        Schema::create('result', function (Blueprint $table) {
-            $table->integer('ID');
-            $table->integer('No');
-            $table->integer('Answer')->nullable();
-            $table->integer('Tex_ID')->nullable();
+        Schema::create('results', function (Blueprint $table) {
+            $table->integer('id');
+            $table->integer('no');
+            $table->integer('answer')->nullable();
+            $table->integer('tex_id')->nullable();
             $table->timestamps();
         });
 
-        Schema::create('tex_id', function (Blueprint $table) {
-            $table->integer('ID');
-            $table->string('Answer');
+        Schema::create('tex_ids', function (Blueprint $table) {
+            $table->integer('id');
+            $table->string('answer');
         });
     }
 
@@ -40,8 +40,8 @@ class CreateMasterTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('master');
-        Schema::dropIfExists('result');
-        Schema::dropIfExists('tex_id');
+        Schema::dropIfExists('masters');
+        Schema::dropIfExists('results');
+        Schema::dropIfExists('tex_ids');
     }
 }

@@ -14,47 +14,47 @@ class ResultTableSeeder extends Seeder
     {
         $cur = Carbon::now()->format('Y-m-d H:i:s');
 
-        DB::table('result')->insert([
-            'ID' => 1,
-            'No' => 1,
-            'Answer' => 0,
-            'Tex_ID' => null,
+        DB::table('results')->insert([
+            'id' => 1,
+            'no' => 1,
+            'answer' => 0,
+            'tex_id' => null,
             'created_at' => $cur,
             'updated_at' => $cur,
         ]);
 
-        DB::table('result')->insert([
-            'ID' => 1,
-            'No' => 2,
-            'Answer' => 1,
-            'Tex_ID' => null,
+        DB::table('results')->insert([
+            'id' => 1,
+            'no' => 2,
+            'answer' => 1,
+            'tex_id' => null,
             'created_at' => $cur,
             'updated_at' => $cur,
         ]);
 
-        DB::table('result')->insert([
-            'ID' => 1,
-            'No' => 3,
-            'Answer' => 0,
-            'Tex_ID' => null,
+        DB::table('results')->insert([
+            'id' => 1,
+            'no' => 3,
+            'answer' => 0,
+            'tex_id' => null,
             'created_at' => $cur,
             'updated_at' => $cur,
         ]);
 
-        DB::table('result')->insert([
-            'ID' => 1,
-            'No' => 3,
-            'Answer' => 3,
-            'Tex_ID' => null,
+        DB::table('results')->insert([
+            'id' => 1,
+            'no' => 3,
+            'answer' => 3,
+            'tex_id' => null,
             'created_at' => $cur,
             'updated_at' => $cur,
         ]);
 
-        DB::table('result')->insert([
-            'ID' => 1,
-            'No' => 4,
-            'Answer' => null,
-            'Tex_ID' => 0,
+        DB::table('results')->insert([
+            'id' => 1,
+            'no' => 4,
+            'answer' => null,
+            'tex_id' => 0,
             'created_at' => $cur,
             'updated_at' => $cur,
         ]);

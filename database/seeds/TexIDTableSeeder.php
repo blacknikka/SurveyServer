@@ -11,9 +11,13 @@ class TexIDTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tex_id')->insert([
-            'ID' => 0,
-            'Answer' => 'sample tex',
+        DB::table('tex_ids')->insert([
+            'id' => 0,
+            'answer' => 'sample tex',
+        ]);
+        DB::table('tex_ids')->insert([
+            'id' => 1,
+            'answer' => 'sample aaaa',
         ]);
     }
 }
