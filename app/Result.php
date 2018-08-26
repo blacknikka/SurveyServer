@@ -34,7 +34,25 @@ class Result extends Model
             if(is_array($value))
             {
                 // array
-
+                foreach($value as $array_key => $array_value)
+                {
+                    if($array_value === true)
+                    {
+                        // If answer is true, add answer to DB.
+                        $result = new Result;
+                        $result->id = $record['ID'];
+                        $result->no = $key;
+        
+                        // Add answer value by numeric.
+                        $result->answer = $question[$key]['answer'][$array_key];
+                        $result->tex_id = null;
+        
+                        $result->created_at = $cur;
+                        $result->updated_at = $cur;
+        
+                        $result->save();
+                    }
+                }
             }
             else
             {
