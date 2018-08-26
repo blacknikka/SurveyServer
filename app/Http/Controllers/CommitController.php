@@ -8,36 +8,33 @@ use App\Result;
 use App\Master;
 use App\Question\MakeValidation;
 
+use Validator;
+
 class CommitController extends Controller
 {
-    public function get(Request $request) {
-        // var_dump($request);
-
+    private function common(Request $request)
+    {
         $body = $request->all();
         $validate_rule = MakeValidation::GetRules();
 
-        $this->validate($request, $validate_rule);
+        $validator = Validator::make($body, $validate_rule);
+        if($validator->fails())
+        {
+            return [
+                'result' => false,
+            ];
+        }
 
         $results = Result::All();
         // Master::init();
-        return $results;
+        return $body;
+    }
 
-        // return ['get' => 'get', 'get2' => 'get2'];
+    public function get(Request $request) {
+        return $this->common($request);
     }
 
     public function post(Request $request) {
-        // postされたデータのバリデーションを行う
-        // return response()->json(['post' => 'post']);
-        // return response('Hello World', 200)->header("Content-Type", "application/json")->header("Access-Control-Allow-Origin", "*");
-
-        // return ['ID' => $request->ID, 'InputData' => $request->InputData ];
-
-        $body = $request->all();
-        $validate_rule = MakeValidation::GetRules();
-        $this->validate($request, $validate_rule);
-
-        $results = Result::All();
-        // Question::Check();
-        return $body;
+        return $this->common($request);
     }
 }

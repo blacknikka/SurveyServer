@@ -6,6 +6,7 @@ use Illuminate\Validation\Rule;
 
 class MakeValidation
 {
+    // Make validation rules.
     public static function GetRules()
     {
         $rules = Master::GetQuestionInf();
@@ -25,7 +26,12 @@ class MakeValidation
             }
             if($value['type'] === 'SelectMulti')
             {
-                $validate_rule['InputData.' . $value['question']] = 'present';
+                // 'SelectMulti' must include each answer.
+                $keyName = 'InputData.' . $value['question'];
+                foreach($value['answer'] as $ansKey => $ansVal)
+                {
+                    $validate_rule[$keyName . '.' . $ansVal] = ['required', 'boolean'];
+                }
             }
             if($value['type'] === 'WriteAny')
             {
