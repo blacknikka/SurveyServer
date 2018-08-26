@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Libs\Survey;
 use App\Result;
 use App\Master;
-use App\Question\Question;
+use App\Question\MakeValidation;
 
 class CommitController extends Controller
 {
@@ -14,16 +14,12 @@ class CommitController extends Controller
         // var_dump($request);
 
         $body = $request->all();
-        $validate_rule = [
-            'ID' => 'required',
-        ];
+        $validate_rule = MakeValidation::GetRules();
 
-        // $this->validate($request, $validate_rule);
+        $this->validate($request, $validate_rule);
 
         $results = Result::All();
-        // Question::Check();
-        Master::init();
-        Master::GetQuestion($body);
+        // Master::init();
         return $results;
 
         // return ['get' => 'get', 'get2' => 'get2'];
@@ -37,10 +33,11 @@ class CommitController extends Controller
         // return ['ID' => $request->ID, 'InputData' => $request->InputData ];
 
         $body = $request->all();
+        $validate_rule = MakeValidation::GetRules();
+        $this->validate($request, $validate_rule);
+
         $results = Result::All();
         // Question::Check();
-        Master::init();
-        Master::GetQuestion($body);
-        return $results;
+        return $body;
     }
 }

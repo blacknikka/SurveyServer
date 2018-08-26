@@ -23,6 +23,7 @@ class Master extends Model
             if(isset(Master::$question[$value['id']]) === false)
             {
                 Master::$question[$value['id']] = [
+                    'question' => 'Question' . $value['id'],
                     'type' => $value['type'],
                     'answer' => [$value['answer']],
                 ];
@@ -32,37 +33,11 @@ class Master extends Model
                 array_push(Master::$question[$value['id']]['answer'], $value['answer']);
             }
         }
-
     }
 
-    public static function GetQuestion($answer)
+    public static function GetQuestionInf()
     {
-        var_dump($answer);
-        $inputData = $answer['InputData'];
-        var_dump($inputData);
-        $ret = true;
-        foreach(Master::$question as $key => $value)
-        {
-            $qNo = 'Question' . $key;
-            if($value['type'] === 'SelectOne')
-            {
-                $ansKey = $inputData[$qNo];
-                if(isset($ansKey))
-                {
-                    // 送られた内容と質問の内容を比較する（範囲内かどうかのチェック）
-                    if(array_has($value['answer'], $ansKey))
-                    {
-                        $ret = false;
-                    }
-                }
-                else
-                {
-                    $ret = false;
-                }
-            }
-        }
-
-        var_dump($ret);
-        return $ret;
+        Master::init();
+        return Master::$question;
     }
 }
