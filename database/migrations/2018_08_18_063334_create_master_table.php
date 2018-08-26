@@ -22,7 +22,7 @@ class CreateMasterTable extends Migration
 
         Schema::create('tex_ids', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->string('answer');
+            $table->string('answer')->nullable();
         });
 
         Schema::create('results', function (Blueprint $table) {

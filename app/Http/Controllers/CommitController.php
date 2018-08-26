@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Libs\Survey;
 use App\Result;
-use App\Master;
 use App\Question\MakeValidation;
 use App\Question\ExchangeRecord;
 

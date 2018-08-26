@@ -13,6 +13,8 @@ class Master extends Model
      */
     protected $table = 'masters';
 
+    public $timestamps = false;
+
     // Questions list
     private static $question = [];
 

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Master;
+use App\Tex_id;
 use Carbon\Carbon;
 
 class Result extends Model
@@ -43,8 +44,18 @@ class Result extends Model
 
                 if($question[$key]['type'] === 'WriteAny')
                 {
-                    // $result->answer = null;
-                    // $result->tex_id = $value;
+                    // Free writable data.
+                    if($value !== '' && is_null($value) !== true)
+                    {
+                        // NOT empty and NOT null
+                        $result->answer = null;
+                        $result->tex_id = Tex_id::AddText($value);
+                    }
+                    else
+                    {
+                        $result->answer = null;
+                        $result->tex_id = null;
+                    }
                 }
                 else
                 {
@@ -56,7 +67,6 @@ class Result extends Model
                 $result->created_at = $cur;
                 $result->updated_at = $cur;
 
-                var_dump($result);
                 $result->save();
             }
         }
