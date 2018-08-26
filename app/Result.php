@@ -24,6 +24,10 @@ class Result extends Model
     // Add record to DB.
     public static function AddRecord($record)
     {
+        // before add the data, check survey data.
+        // are there the data in DB, delete it before adding.
+        Result::where('id', $record['ID'])->delete();
+
         $question = Master::GetQuestionInf();
         $data = $record['InputData'];
 
