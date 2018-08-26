@@ -7,6 +7,7 @@ use App\Libs\Survey;
 use App\Result;
 use App\Master;
 use App\Question\MakeValidation;
+use App\Question\ExchangeRecord;
 
 use Validator;
 
@@ -15,8 +16,9 @@ class CommitController extends Controller
     private function common(Request $request)
     {
         $body = $request->all();
-        $validate_rule = MakeValidation::GetRules();
+        $validate_rule = MakeValidation::GetRules($body);
 
+        // custom validator
         $validator = Validator::make($body, $validate_rule);
         if($validator->fails())
         {
@@ -25,8 +27,10 @@ class CommitController extends Controller
             ];
         }
 
-        $results = Result::All();
-        // Master::init();
+        // success validate.
+        // create data.
+        Result::AddRecord($body);
+
         return $body;
     }
 

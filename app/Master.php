@@ -13,9 +13,11 @@ class Master extends Model
      */
     protected $table = 'masters';
 
+    // Questions list
     private static $question = [];
 
-    public static function init()
+    // Get the data from DB, and make Question list.
+    private static function init()
     {
         $db = Master::All();
         foreach($db as $value)
@@ -23,18 +25,19 @@ class Master extends Model
             if(isset(Master::$question[$value['id']]) === false)
             {
                 Master::$question[$value['id']] = [
-                    'question' => 'Question' . $value['id'],
+                    'question' => $value['id'],
                     'type' => $value['type'],
-                    'answer' => [$value['answer']],
+                    'answer' => [$value['answer'] => $value['value']],
                 ];
             }
             else
             {
-                array_push(Master::$question[$value['id']]['answer'], $value['answer']);
+                Master::$question[$value['id']]['answer'][$value['answer']] = $value['value'];
             }
         }
     }
 
+    // Get Questions list
     public static function GetQuestionInf()
     {
         Master::init();

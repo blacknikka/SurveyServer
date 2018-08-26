@@ -12,7 +12,7 @@ class MakeValidation
         $rules = Master::GetQuestionInf();
 
         $validate_rule = [
-            'ID' => 'required',
+            'ID' => 'required|integer',
             'InputData' => 'required',
         ];
 
@@ -22,7 +22,7 @@ class MakeValidation
             if($value['type'] === 'SelectOne')
             {
                 // 'SelectOne' must include one answer.
-                $validate_rule['InputData.' . $value['question']] = ['required', Rule::in($value['answer'])];
+                $validate_rule['InputData.' . $value['question']] = ['required', Rule::in(array_keys($value['answer']))];
             }
             if($value['type'] === 'SelectMulti')
             {
@@ -30,7 +30,7 @@ class MakeValidation
                 $keyName = 'InputData.' . $value['question'];
                 foreach($value['answer'] as $ansKey => $ansVal)
                 {
-                    $validate_rule[$keyName . '.' . $ansVal] = ['required', 'boolean'];
+                    $validate_rule[$keyName . '.' . $ansKey] = ['required', 'boolean'];
                 }
             }
             if($value['type'] === 'WriteAny')

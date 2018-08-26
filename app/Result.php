@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Master;
+use Carbon\Carbon;
 
 class Result extends Model
 {
@@ -12,4 +14,52 @@ class Result extends Model
      * @var string
      */
     protected $table = 'results';
+
+    public function tex_id()
+    {
+        return $this->hasOne('App\Tex_id');
+    }
+
+    // Add record to DB.
+    public static function AddRecord($record)
+    {
+        $question = Master::GetQuestionInf();
+        $data = $record['InputData'];
+
+        $cur = Carbon::now()->format('Y-m-d H:i:s');
+
+        foreach($data as $key => $value)
+        {
+            if(is_array($value))
+            {
+                // array
+
+            }
+            else
+            {
+                $result = new Result;
+                $result->id = $record['ID'];
+                $result->no = $key;
+
+                if($question[$key]['type'] === 'WriteAny')
+                {
+                    // $result->answer = null;
+                    // $result->tex_id = $value;
+                }
+                else
+                {
+                    // Add answer value by numeric.
+                    $result->answer = $question[$key]['answer'][$value];
+                    $result->tex_id = null;
+                }
+
+                $result->created_at = $cur;
+                $result->updated_at = $cur;
+
+                var_dump($result);
+                $result->save();
+            }
+        }
+    }
+
 }

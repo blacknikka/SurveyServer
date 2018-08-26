@@ -17,20 +17,26 @@ class CreateMasterTable extends Migration
             $table->integer('id');
             $table->string('type');
             $table->string('answer');
+            $table->integer('value')->nullable();
+        });
+
+        Schema::create('tex_ids', function (Blueprint $table) {
+            $table->increments('id')->unsigned();
+            $table->string('answer');
         });
 
         Schema::create('results', function (Blueprint $table) {
             $table->integer('id');
             $table->integer('no');
             $table->integer('answer')->nullable();
-            $table->integer('tex_id')->nullable();
+            $table->unsignedInteger('tex_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('tex_id')
+                ->references('id')
+                ->on('tex_ids');
         });
 
-        Schema::create('tex_ids', function (Blueprint $table) {
-            $table->integer('id');
-            $table->string('answer');
-        });
     }
 
     /**

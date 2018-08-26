@@ -54,7 +54,7 @@ class ResultTableSeeder extends Seeder
             'id' => 1,
             'no' => 4,
             'answer' => null,
-            'tex_id' => 0,
+            'tex_id' => 2,
             'created_at' => $cur,
             'updated_at' => $cur,
         ]);
