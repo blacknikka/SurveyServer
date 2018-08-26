@@ -14,5 +14,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MasterTableSeeder::class);
         $this->call(TexIDTableSeeder::class);
         $this->call(ResultTableSeeder::class);
+        $this->call(PswTableSeeder::class);
     }
 }

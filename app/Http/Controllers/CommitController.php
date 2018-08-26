@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Libs\Survey;
 use App\Result;
 use App\Question\MakeValidation;
-use App\Question\ExchangeRecord;
 
 use Validator;
 
@@ -31,10 +29,6 @@ class CommitController extends Controller
         Result::AddRecord($body);
 
         return $body;
-    }
-
-    public function get(Request $request) {
-        return $this->common($request);
     }
 
     public function post(Request $request) {

@@ -15,5 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/commit', 'CommitController@get');
 Route::post('/commit', 'CommitController@post');
+
+Route::post('/login', 'LoginController@Login');

@@ -37,6 +37,11 @@ class CreateMasterTable extends Migration
                 ->on('tex_ids');
         });
 
+        Schema::create('psws', function (Blueprint $table) {
+            $table->string('mail');
+            $table->string('psw');
+        });
+
     }
 
     /**
@@ -49,5 +54,6 @@ class CreateMasterTable extends Migration
         Schema::dropIfExists('masters');
         Schema::dropIfExists('results');
         Schema::dropIfExists('tex_ids');
+        Schema::dropIfExists('psws');
     }
 }
