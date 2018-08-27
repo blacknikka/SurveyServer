@@ -38,8 +38,18 @@ class CreateMasterTable extends Migration
         });
 
         Schema::create('psws', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('mail');
             $table->string('psw');
+        });
+
+        Schema::create('tokens', function (Blueprint $table) {
+            $table->unsignedInteger('user_id');
+            $table->string('token');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('psws');
         });
 
     }
@@ -55,5 +65,6 @@ class CreateMasterTable extends Migration
         Schema::dropIfExists('results');
         Schema::dropIfExists('tex_ids');
         Schema::dropIfExists('psws');
+        Schema::dropIfExists('tokens');
     }
 }

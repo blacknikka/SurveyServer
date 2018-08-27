@@ -4,14 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Psw extends Model
+class Token extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'psws';
+    protected $table = 'tokens';
 
-    public $timestamps = false;
 }
