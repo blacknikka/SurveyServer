@@ -13,6 +13,7 @@ class MakeValidation
 
         $validate_rule = [
             'ID' => 'required|integer',
+            'token' => 'required|string',
             'InputData' => 'required',
         ];
 

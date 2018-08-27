@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Result;
 use App\Question\MakeValidation;
+use App\Auth\Auth;
 
 use Validator;
 
@@ -18,6 +19,14 @@ class CommitController extends Controller
         // custom validator
         $validator = Validator::make($body, $validate_rule);
         if($validator->fails())
+        {
+            return [
+                'result' => false,
+            ];
+        }
+
+        // check token.
+        if(Auth::CheckToken($body['token'], $body['ID']) === false)
         {
             return [
                 'result' => false,

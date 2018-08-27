@@ -13,4 +13,5 @@ class Token extends Model
      */
     protected $table = 'tokens';
 
+    public $timestamps = true;
 }
