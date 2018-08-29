@@ -12,7 +12,7 @@ class MakeValidation
         $rules = Master::GetQuestionInf();
 
         $validate_rule = [
-            'ID' => 'required|integer',
+            'mail' => 'required|email',
             'token' => 'required|string',
             'InputData' => 'required',
         ];

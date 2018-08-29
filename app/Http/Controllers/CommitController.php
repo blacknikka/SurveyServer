@@ -22,20 +22,23 @@ class CommitController extends Controller
         {
             return [
                 'result' => false,
+                'msg' => 'committed data error.'
             ];
         }
 
         // check token.
-        if(Auth::CheckToken($body['token'], $body['ID']) === false)
+        $check = Auth::CheckToken($body['token'], $body['mail']);
+        if($check['result'] === false)
         {
             return [
                 'result' => false,
+                'msg' => 'token data error.'
             ];
         }
 
         // success validate.
         // create data.
-        Result::AddRecord($body);
+        Result::AddRecord($body, $check['id']);
 
         return $body;
     }

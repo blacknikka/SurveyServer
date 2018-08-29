@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Auth\Auth;
 use App\Token;
+use App\Master;
 use Validator;
 use Carbon\Carbon;
 
@@ -67,6 +68,8 @@ class LoginController extends Controller
                     $tokenData->updated_at = $cur;
     
                     $tokenData->save();
+
+                    $ret['survey'] = Master::GetQuestionInf();
                 }
             }
         }

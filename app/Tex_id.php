@@ -22,7 +22,6 @@ class Tex_id extends Model
 
     public static function AddText($data)
     {
-        var_dump($data);
         $text = new Tex_id;
         $text->answer = $data;
         $text->save();

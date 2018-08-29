@@ -22,11 +22,11 @@ class Result extends Model
     }
 
     // Add record to DB.
-    public static function AddRecord($record)
+    public static function AddRecord($record, $id)
     {
         // before add the data, check survey data.
         // are there the data in DB, delete it before adding.
-        Result::where('id', $record['ID'])->delete();
+        Result::where('id', $id)->delete();
 
         $question = Master::GetQuestionInf();
         $data = $record['InputData'];
@@ -44,7 +44,7 @@ class Result extends Model
                     {
                         // If answer is true, add answer to DB.
                         $result = new Result;
-                        $result->id = $record['ID'];
+                        $result->id = $id;
                         $result->no = $key;
         
                         // Add answer value by numeric.
@@ -61,7 +61,7 @@ class Result extends Model
             else
             {
                 $result = new Result;
-                $result->id = $record['ID'];
+                $result->id = $id;
                 $result->no = $key;
 
                 if($question[$key]['type'] === 'WriteAny')

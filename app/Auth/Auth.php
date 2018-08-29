@@ -40,17 +40,21 @@ class Auth
         return md5($str);
     }
 
-    // check token by ID
-    public static function CheckToken($token, $id)
+    // check token by mail
+    public static function CheckToken($token, $mail)
     {
-        $ret = false;
+        $ret = [
+            'result' => false,
+            'id' => 0,
+        ];
 
         // get token data.
         $db = Token::where('token', $token)->first();
+        $id = Psw::where('id', $db['user_id'])->first();
         if($db !== null)
         {
             // check token and timestamp.
-            if($db['token'] === $token && $db['user_id'] === $id)
+            if($db['token'] === $token && $id['mail'] === $mail)
             {
                 // token is OK
                 // If time is NOT too old, it is OK.
@@ -64,7 +68,8 @@ class Auth
 
                 if($time->gte($cur))
                 {
-                    $ret = true;
+                    $ret['result'] = true;
+                    $ret['id'] = $db['user_id'];
                 }
             }
         }
