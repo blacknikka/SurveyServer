@@ -40,7 +40,10 @@ class CommitController extends Controller
         // create data.
         Result::AddRecord($body, $check['id']);
 
-        return $body;
+        return [
+            'result' => true,
+            'msg' => 'success!',
+        ];
     }
 
     public function post(Request $request) {

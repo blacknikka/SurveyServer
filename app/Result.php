@@ -26,8 +26,19 @@ class Result extends Model
     {
         // before add the data, check survey data.
         // are there the data in DB, delete it before adding.
+        $deleteData = Result::where('id', $id)->get();
+        $deleteArray = [];
+        foreach($deleteData as $value)
+        {
+            array_push($deleteArray, $value['user_id']);
+        }
         Result::where('id', $id)->delete();
+        foreach($deleteArray as $value)
+        {
+            Tex_id::where('id', $value)->delete();
+        }
 
+        // Add data.
         $question = Master::GetQuestionInf();
         $data = $record['InputData'];
 
